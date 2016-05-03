@@ -251,6 +251,10 @@
     <Compile Include="Migrations\201605011920455_InitialCreate1.Designer.cs">
       <DependentUpon>201605011920455_InitialCreate1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605031617004_InitialCreate2.cs" />
+    <Compile Include="Migrations\201605031617004_InitialCreate2.Designer.cs">
+      <DependentUpon>201605031617004_InitialCreate2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -267,6 +271,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\YayOrNayDb.mdf" />
+    <Content Include="App_Data\YayOrNayDb_log.ldf">
+      <DependentUpon>YayOrNayDb.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
@@ -311,16 +319,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="apiapp.json" />
-    <None Include="Properties\PublishProfiles\yanornay - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\yanornay - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\yanornay.pubxml" />
-    <None Include="Properties\PublishProfiles\yanornaymovie - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\YayOrNay - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\YayOrNay - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\yayornay - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\YayOrNay - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\yon2 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\yon2 - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\yon2 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
@@ -391,7 +391,6 @@
     <Content Include="Views\Movie\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\File\" />
     <Folder Include="Views\Genre\" />
   </ItemGroup>
@@ -420,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605011920455_InitialCreate1.resx">
       <DependentUpon>201605011920455_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605031617004_InitialCreate2.resx">
+      <DependentUpon>201605031617004_InitialCreate2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -45,7 +45,11 @@
                     <p>Genre: @item.Genre</p>
                     <p>Certifications: @item.Certificate</p>
 
+                  
+
                     <p> Release Date: @Convert.ToString(string.Format("{0:dd/MM/yyy}", @item.ReleaseDate))</p>
+
+                    <p> Overall User Rating: @item.AverageRating</p>
                     <p>
                         @Html.ActionLink("Reviews: ", "Index", "Reviews", new { id = item.Id }, null)
                         <b>@item.CountOfReviews</b>
