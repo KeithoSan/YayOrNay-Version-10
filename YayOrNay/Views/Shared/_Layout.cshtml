@@ -15,7 +15,6 @@
 
     <style>
         footer {
-            /*background-color:black;*/
             color: white;
             clear: both;
             text-align: center;
@@ -35,64 +34,66 @@
 
 
 
-                @Html.ActionLink("Yay or Nay Movies", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+@Html.ActionLink("Yay or Nay Movies", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Movies", "Index", "Movie")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>                    
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
+                    <li>@Html.ActionLink("Full Movie Listing", "Index", "Movie")</li>
 
 
 
-
-
-    @*<div class="container body-content">
-
-
-               @RenderBody()
-
-               <hr />
-        </div>*@
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                    </div>
+                    </div>
+                    </div>
 
 
 
 
 
-    @*This part was suppose to help the async for pagForce ing but it does not work for some reason*@
-
-    <div class="container body-content ">
+                    @*<div class="container body-content">
 
 
-        @RenderBody()
+                               @RenderBody()
 
-    </div>
-
-
-
-    @*<div>
-         @Html.Action("BestReview", "Reviews")
-        </div>*@
+                               <hr />
+                        </div>*@
 
 
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Yay Or Nay Movie Database Web Application</p>
-    </footer>
 
 
-    @Scripts.Render("~/bundles/yon")
 
-    @Scripts.Render("~/bundles/bootstrap")
+                    @*This part was suppose to help the async for pagForce ing but it does not work for some reason*@
+
+                    <div class="container body-content ">
 
 
-    @RenderSection("scripts", required: false)
-</body>
-</html>
+                    @RenderBody()
+
+                    </div>
+
+
+
+                    @*<div>
+                         @Html.Action("BestReview", "Reviews")
+                        </div>*@
+
+
+                    <hr />
+                    <footer>
+                    <p>&copy; @DateTime.Now.Year - Yay Or Nay Movie Database Web Application</p>
+                    </footer>
+
+
+                    @Scripts.Render("~/bundles/yon")
+
+                    @Scripts.Render("~/bundles/bootstrap")
+
+
+                    @RenderSection("scripts", required: false)
+                    </body>
+                </html>

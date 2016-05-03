@@ -1,6 +1,19 @@
 ﻿@model IPagedList<MovieListViewModel>
 
+<style>
+    table.lamp {
+        width: 100%;
+        border: 1px solid #d4d4d4;
+    }
 
+        table.lamp th, td {
+            padding: 10px;
+        }
+
+        table.lamp th {
+            width: 40px;
+        }
+</style>
 
 <div id="movieList">
 
@@ -12,36 +25,37 @@
 
     @foreach (var item in Model)
     {
-        <div>
-           
-            <div>
-                <table><tr>
-                           <td>
-
-                               @if (item.Files != null && item.Files.Any(f => f.FileType == FileType.Avatar))
-                               { 
-                                   <img src="~/File?id=@item.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" height="120" width="120" />
-                               }
-                           </td>
-                    <td>
-                        <h4>@item.Title</h4>
-                        <p>Genre: @item.Genre</p>
-                        <p>Certifications: @item.Certificate</p>
-
-                        <p> Release Date: @Convert.ToString(string.Format("{0:dd/MM/yyy}", @item.ReleaseDate))</p>
-                        <div>
-                            
-                            @Html.ActionLink("Reviews: ", "Index", "Reviews", new { id = item.Id }, null) <b>@item.CountOfReviews</b>
-                        </div>
-
-                        <hr />
-                    </td>    
-
-                </tr></table>           
-            </div>
 
 
-        </div>
+        <table class="lamp">
+
+            <tr>
+                <th>
+
+                    @if (item.Files != null && item.Files.Any(f => f.FileType == FileType.Avatar))
+                    {
+                        <img src="~/File?id=@item.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" height="542" width="370" />
+                    }
+
+                </th>
+
+
+                <td>
+                    <h4>@item.Title</h4>
+                    <p>Genre: @item.Genre</p>
+                    <p>Certifications: @item.Certificate</p>
+
+                    <p> Release Date: @Convert.ToString(string.Format("{0:dd/MM/yyy}", @item.ReleaseDate))</p>
+                    <p>
+                        @Html.ActionLink("Reviews: ", "Index", "Reviews", new { id = item.Id }, null)
+                        <b>@item.CountOfReviews</b>
+                    </p>
+                </td>
+
+        </table>
+
+
+
     }
 
 

@@ -7,16 +7,21 @@
 
 
 <table class="table">
+
+
+
     <tr>
+       
         <th>
-            @Html.DisplayNameFor(model => model.Rating)
+            @Html.DisplayNameFor(model => model.ReviewerName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Comment)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReviewerName)
+            @Html.DisplayNameFor(model => model.Rating)
         </th>
+      
 
 
 
@@ -30,13 +35,15 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Rating)
+                @Html.DisplayFor(modelItem => item.ReviewerName)
             </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Comment)
             </td>
+           
             <td>
-                @Html.DisplayFor(modelItem => item.ReviewerName)
+                @Html.DisplayFor(modelItem => item.Rating)
             </td>
           
 

@@ -73,7 +73,7 @@ namespace YayOrNay.Controllers
                     break;
             }
 
-            int pageSize = 10;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(movies.ToPagedList(pageNumber, pageSize));
         }

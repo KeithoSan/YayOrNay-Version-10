@@ -32,10 +32,15 @@ namespace YayOrNay
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+
+
+            //I pagelist to allow some pagin in the application
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css", "~/Content/PagedList.css"));
 
+
+            //created bundle here to assign some jquery function such as the flash
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         
                         "~/Content/themes/base/jquery.ui.core.css",
