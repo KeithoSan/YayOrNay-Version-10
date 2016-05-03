@@ -13,20 +13,31 @@
     @foreach (var item in Model)
     {
         <div>
-            <h4>@item.Title</h4>
+           
             <div>
-                <p>Genre: @item.Genre</p>
-                <p>Certifications: @item.Certificate</p>
+                <table><tr>
+                           <td>
 
-                <p> Release Date: @Convert.ToString(string.Format("{0:dd/MM/yyy}", @item.ReleaseDate))</p>
+                               @if (item.Files != null && item.Files.Any(f => f.FileType == FileType.Avatar))
+                               { 
+                                   <img src="~/File?id=@item.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" height="120" width="120" />
+                               }
+                           </td>
+                    <td>
+                        <h4>@item.Title</h4>
+                        <p>Genre: @item.Genre</p>
+                        <p>Certifications: @item.Certificate</p>
 
+                        <p> Release Date: @Convert.ToString(string.Format("{0:dd/MM/yyy}", @item.ReleaseDate))</p>
+                        <div>
+                            
+                            @Html.ActionLink("Reviews: ", "Index", "Reviews", new { id = item.Id }, null) <b>@item.CountOfReviews</b>
+                        </div>
 
+                        <hr />
+                    </td>    
 
-                <div>
-                    Reviews: @item.CountOfReviews
-                </div>
-
-                <hr />
+                </tr></table>           
             </div>
 
 

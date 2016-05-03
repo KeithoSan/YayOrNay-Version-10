@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-  
-    <meta name="viewport" content="width=device-width" /> 
+    <title>@ViewBag.Title -Movie App</title>
+
+    <meta name="viewport" content="width=device-width" />
 
     @Styles.Render("~/Content/themes/base/css")
 
@@ -13,7 +13,14 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-
+    <style>
+        footer {
+            /*background-color:black;*/
+            color: white;
+            clear: both;
+            text-align: center;
+            padding: 5px;
+    </style>
 
 </head>
 <body>
@@ -26,16 +33,17 @@
                     <span class="icon-bar"></span>
                 </button>
 
-              
 
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                @Html.ActionLink("Yay or Nay Movies", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Movies", "Index", "Movie")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Movies", "Index", "Movie")</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -43,46 +51,47 @@
     </div>
 
 
-    
+
 
 
     @*<div class="container body-content">
-      
-        
-            @RenderBody()
-
-            <hr />
-     </div>*@
 
 
-    
+               @RenderBody()
+
+               <hr />
+        </div>*@
+
+
+
 
 
     @*This part was suppose to help the async for pagForce ing but it does not work for some reason*@
 
     <div class="container body-content ">
-       
-       
-            @RenderBody()
-       
-    </div> 
+
+
+        @RenderBody()
+
+    </div>
 
 
 
-           @*<div>
-            @Html.Action("BestReview", "Reviews")
-           </div>*@
+    @*<div>
+         @Html.Action("BestReview", "Reviews")
+        </div>*@
 
 
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Yay Or Nay Movie Database Web Application</p>
+    </footer>
 
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-   
 
     @Scripts.Render("~/bundles/yon")
 
-    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @Scripts.Render("~/bundles/bootstrap")
+
 
     @RenderSection("scripts", required: false)
 </body>

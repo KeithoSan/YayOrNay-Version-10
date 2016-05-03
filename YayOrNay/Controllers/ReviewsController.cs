@@ -36,6 +36,12 @@ namespace YayOrNay.Controllers
            if(ModelState.IsValid)
            {
                _db.Reviews.Add(review);
+                // get current movie from Movies list in db
+                Movie movie = _db.Movies.Find(review.MovieId);
+                // get the list of review in cerrent movie
+                ICollection<MovieReview> reviews = movie.Reviews;
+                // add new review into the review list
+                reviews.Add(review);
                _db.SaveChanges();
                return RedirectToAction("Index", new { id = review.MovieId });
            }

@@ -54,15 +54,15 @@ namespace YayOrNay
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+           appId: "972908792777852",
+           appSecret: "15518b6eb79d13682ee5a67d39d7e08e");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "934596652669-n1denh30ip32er82quvj8fekqs75m7j1.apps.googleusercontent.com",
+                ClientSecret = "8XwGB9U_vGtW0p6NBgVb24b8"
+            });
         }
     }
 }

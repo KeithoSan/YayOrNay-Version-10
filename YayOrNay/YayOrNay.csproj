@@ -16,10 +16,10 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressSSLPort>44354</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -64,7 +64,15 @@
       <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Eggado, Version=1.0.18429.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eggado.1.0\lib\net40\Eggado.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NotWebMatrix.Data, Version=1.4.18503.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NotWebMatrix.Data.1.4\lib\net40\NotWebMatrix.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
       <Private>True</Private>
@@ -146,6 +154,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WebMatrix.Data.StronglyTyped, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebMatrix.Data.StronglyTyped.0.2.0.0\lib\WebMatrix.Data.StronglyTyped.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -205,6 +217,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -222,9 +235,28 @@
     <Compile Include="Migrations\201604041628452_AddReleaseDateMig.Designer.cs">
       <DependentUpon>201604041628452_AddReleaseDateMig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604221734195_Movies.cs" />
+    <Compile Include="Migrations\201604221734195_Movies.Designer.cs">
+      <DependentUpon>201604221734195_Movies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604221753326_Files.cs" />
+    <Compile Include="Migrations\201604221753326_Files.Designer.cs">
+      <DependentUpon>201604221753326_Files.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605011918329_InitialCreate.cs" />
+    <Compile Include="Migrations\201605011918329_InitialCreate.Designer.cs">
+      <DependentUpon>201605011918329_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605011920455_InitialCreate1.cs" />
+    <Compile Include="Migrations\201605011920455_InitialCreate1.Designer.cs">
+      <DependentUpon>201605011920455_InitialCreate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DecimalFormat.cs" />
+    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -277,6 +309,18 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
+    <Content Include="apiapp.json" />
+    <None Include="Properties\PublishProfiles\yanornay - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\yanornay - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\yanornay.pubxml" />
+    <None Include="Properties\PublishProfiles\yanornaymovie - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\YayOrNay - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\YayOrNay - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\YayOrNay - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\yon2 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\yon2 - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\yon2 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
@@ -344,9 +388,11 @@
     <Content Include="Views\Reviews\_Reviews.cshtml" />
     <Content Include="Views\Reviews\Create.cshtml" />
     <Content Include="Views\Home\_Movies.cshtml" />
+    <Content Include="Views\Movie\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\File\" />
     <Folder Include="Views\Genre\" />
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +408,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604041628452_AddReleaseDateMig.resx">
       <DependentUpon>201604041628452_AddReleaseDateMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604221734195_Movies.resx">
+      <DependentUpon>201604221734195_Movies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604221753326_Files.resx">
+      <DependentUpon>201604221753326_Files.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605011918329_InitialCreate.resx">
+      <DependentUpon>201605011918329_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605011920455_InitialCreate1.resx">
+      <DependentUpon>201605011920455_InitialCreate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -382,7 +440,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>45759</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:45759/</IISUrl>
+          <IISUrl>https://localhost:44354/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

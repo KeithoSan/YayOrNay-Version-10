@@ -13,40 +13,35 @@ namespace YayOrNay.Models
         public string Genre { get; set; }
         public string Certificate { get; set; }
 
-        //public double AverageRating
-        //{
-        //    get
-        //    {
-        //        using (MovieReview db = new MovieReview())
-        //        {
-        //            var reviews = db.Rating
-
-        //                if (reviews.Count()>0)
-        //            {
-        //                double RatingAverage = (double) reviews.Average(r => r.Rating) 0;
-        //                return RatingAverage;
-        //            }
-        //            return 0;
-        //        }
-        //    }
-        //}
-  
-
-
-
-
-
-
-
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime ReleaseDate { get; set; }
 
-
-        //public double Rating { get; set; }
-
-
-
         public virtual ICollection<MovieReview> Reviews { get; set; }
+        public virtual ICollection<File> Files { get; set; }
+
+
+        
+        public double AverageRating
+        {
+            get
+            {
+                double totalRating = 0;
+                if(Reviews != null)
+                {
+                    int numReviewed = Reviews.Count;
+                    if( numReviewed > 0)
+                    {
+                        foreach(MovieReview review in Reviews)
+                        {
+                            totalRating += review.Rating;
+                        }
+
+                        return Math.Round(totalRating / numReviewed, 2);
+                    }
+                }
+                return totalRating;
+            }
+        }
 
     }
 }

@@ -14,6 +14,7 @@ namespace YayOrNay.Models
         public string Certificate { get; set; }
 
 
+        public virtual ICollection<File> Files { get; set; }
         //public double AverageRating
         //{
         //    get
@@ -31,7 +32,7 @@ namespace YayOrNay.Models
         //        }
         //    }
         //}
-  
+
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime ReleaseDate { get; set; }

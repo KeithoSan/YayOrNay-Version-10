@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebMatrix.Data;
 
 namespace YayOrNay
 {
@@ -12,6 +13,14 @@ namespace YayOrNay
     {
         protected void Application_Start()
         {
+
+
+
+          
+              
+                         
+                             
+                                         
 
             AreaRegistration.RegisterAllAreas();
 

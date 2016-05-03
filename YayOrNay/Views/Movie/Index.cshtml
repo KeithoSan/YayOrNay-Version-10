@@ -1,13 +1,37 @@
-﻿@model IEnumerable<YayOrNay.Models.Movie>
+﻿@model PagedList.IPagedList<YayOrNay.Models.Movie>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Movies";
 }
 
-<h2>Index</h2>
+<h2>Full Movie List</h2>
 
 
 
+@*<p>
+
+
+    @using (Html.BeginForm("Index", "Movie", FormMethod.Get))
+    {
+    <p>
+        Genre: @Html.DropDownList("movieGenre", "All")
+        Title: @Html.TextBox("SearchString") <br />
+        <input type="submit" value="Filter" />
+    </p>
+    }
+    </p>*@
+
+@using (Html.BeginForm("Index", "Movie", FormMethod.Get))
+{
+    <p>
+
+        Title: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        Genre: @Html.DropDownList("movieGenre", "All")
+        <input type="submit" value="Search" />
+    </p>
+}
 
 
 <p>
@@ -16,18 +40,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Genre)
+            Genre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Certificate)
+            Certificate
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            @Html.ActionLink("Release Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
+        <th>
+            Overall Rating
+        </th>
+
+
+
 
         <th></th>
     </tr>
@@ -50,6 +80,14 @@
             </td>
 
             <td>
+
+                <div class="scroll">
+                    @Html.DisplayFor(modelItem => item.AverageRating)
+                </div>
+            </td>
+
+
+            <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Reviews", "Index", "Reviews", new { id = item.Id }, null) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
@@ -58,3 +96,8 @@
     }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
