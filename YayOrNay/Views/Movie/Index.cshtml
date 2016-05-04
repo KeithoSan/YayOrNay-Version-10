@@ -8,31 +8,16 @@
 
 <h2>Full Movie List</h2>
 
-
-
-@*<p>
-
-
-    @using (Html.BeginForm("Index", "Movie", FormMethod.Get))
-    {
-    <p>
-        Genre: @Html.DropDownList("movieGenre", "All")
-        Title: @Html.TextBox("SearchString") <br />
-        <input type="submit" value="Filter" />
-    </p>
-    }
-    </p>*@
-
 @using (Html.BeginForm("Index", "Movie", FormMethod.Get))
 {
     <p>
 
+        @* Search functions one drop down and list of genre that is included in the system *@
         Title: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
         Genre: @Html.DropDownList("movieGenre", "All")
         <input type="submit" value="Search" />
     </p>
 }
-
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -41,7 +26,7 @@
     <tr>
 
         <th>
-            
+
         </th>
 
 
@@ -64,7 +49,7 @@
         <th>
             Number of Reviews
         </th>
-      
+
 
 
 
@@ -107,7 +92,7 @@
                 </div>
             </td>
 
-           <td>
+            <td>
                 @item.Reviews.Count
             </td>
 

@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PagedList;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using YayOrNay.Models;
-using PagedList;
 
 namespace YayOrNay.Controllers
 {
     public class HomeController : Controller
     {
         YayOrNayDb _db = new YayOrNayDb();
-
-
-
+        
         public ActionResult Autocomplete (string term)
         {
+            //searching function, it is automaticaly complete what user will type
             var model =
                 _db.Movies
                 .Where(r => r.Title.StartsWith(term))
@@ -33,18 +29,6 @@ namespace YayOrNay.Controllers
         public ActionResult Index(string searchTerm = null, int page = 1)
         {
 
-            //var model =
-            //    from r in _db.Movies
-            //    orderby r.Reviews.Average(review => review.Rating) descending
-            //    select new MovieListViewModel
-            //    {
-            //       Id = r.Id,
-            //        Title = r.Title,
-            //        Genre = r.Genre,
-            //        Certificate = r.Certificate,
-            //        CountOfReviews = r.Reviews.Count()
-            //    };
-
             var model =
                  _db.Movies
                  .OrderByDescending(r => r.Reviews.Average(review => review.Rating))
@@ -54,7 +38,6 @@ namespace YayOrNay.Controllers
                          {
                      
                              Id = r.Id,
-                             //Files = r.Files,
                              Title = r.Title,
                              Genre = r.Genre,
                              Certificate = r.Certificate,
@@ -63,15 +46,11 @@ namespace YayOrNay.Controllers
                              Files = r.Files
                          }).ToPagedList(page, 1);
 
-
-
-
+            
             if (Request.IsAjaxRequest())
             {
                 return PartialView("_Movies", model);
-            }
-          
-
+            }          
             return View(model);
         }
 
@@ -85,7 +64,6 @@ namespace YayOrNay.Controllers
             model.Location = "Dublin, Ireland";
 
             return View(model);
-
         }
 
         public ActionResult Contact()

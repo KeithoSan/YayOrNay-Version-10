@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 
 namespace YayOrNay.Models
 {
     public class YayOrNayDb : DbContext
     {
-        public YayOrNayDb()  : base("YonConnection")
+        public YayOrNayDb() : base("YonConnection")
         {
 
         }

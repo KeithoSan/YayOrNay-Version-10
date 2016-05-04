@@ -6,6 +6,7 @@ using System.Web;
 
 namespace YayOrNay.Models
 {
+    //this class is where we store the files into the database
     public class File
     {
         public int FileId { get; set; }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace YayOrNay.Models
+﻿namespace YayOrNay.Models
 {
- 
-        public enum FileType
+
+
+    //this will profile some image files starting from enum 
+    public enum FileType
         {
             Avatar = 1, Photo
         }

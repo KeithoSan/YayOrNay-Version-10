@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+
 
 namespace YayOrNay.Models
 {
@@ -16,6 +15,9 @@ namespace YayOrNay.Models
 
         public virtual ICollection<File> Files { get; set; }
         public virtual ICollection<MovieReview> Reviews { get; set; }
+
+
+        // some logic for the average rating partial model
         public double AverageRating
         {
             get
@@ -39,6 +41,8 @@ namespace YayOrNay.Models
         }
 
 
+
+        //dating format
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime ReleaseDate { get; set; }
 

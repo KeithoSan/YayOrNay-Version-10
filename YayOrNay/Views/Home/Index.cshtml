@@ -2,7 +2,6 @@
 
 
 
-
 @{
     ViewBag.Title = "Home Page";
 }
@@ -20,56 +19,22 @@
 </div>
 
 
+<form method="get" action="@Url.Action("Index")"
+      data-yon-ajax="true" data-yon-target="#movieList">
+
+    <input type="search" name="searchTerm" data-yon-autocomplete="@Url.Action("Autocomplete")" />
+
+    <input type="submit" value="Search By Title" />
 
 
-@* To display uploaded images of movies *@
-@*<dl class="dl-horizontal">
-    @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
-    {
-        <dt>
-            Avatar
-        </dt>
-        <dd>
-            <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" />
-        </dd>
-    }
-
-</dl>*@
-
-    <form method="get" action="@Url.Action("Index")"
-          data-yon-ajax="true" data-yon-target="#movieList">
-
-        <input type="search" name="searchTerm" data-yon-autocomplete="@Url.Action("Autocomplete")" />
-
-        <input type="submit" value="Search By Title" />
+</form>
 
 
-    </form>
-    
+@Html.Partial("_Movies", Model)
 
 
 
-
-
-
-    @*@using (Ajax.BeginForm(
-            new AjaxOptions {
-                HttpMethod = "get",
-                InsertionMode = InsertionMode.Replace,
-                UpdateTargetId = "movieList" }))
-        {
-            <input type="search" name="searchTerm" />
-            <input type="submit" value="Search By Title" />
-        }*@
-
-
-    @*render the partial view for movies*@
-
-    @Html.Partial("_Movies", Model)
-
-
-
-  <div class="col-md-6">
+<div class="col-md-6">
     <h2>IMDb</h2>
     <p>The Internet Movie Database (abbreviated IMDb) is an online database of information related to films, television programs and video games, including cast, production crew, fictional characters, biographies, plot summaries, trivia and reviews. Actors and crew can post their own résumé and upload photos of themselves for a yearly fee. U.S. users can view over 6,000 movies and television shows from CBS, Sony, and various independent filmmakers.<i>"Wikipedia"</i></p>
     <p><a class="btn btn-default" href="http://www.imdb.com/">Go to imdb.com &raquo;</a></p>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace YayOrNay.Models
+﻿namespace YayOrNay.Models
 {
     public class AboutModel
     {

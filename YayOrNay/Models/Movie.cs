@@ -20,7 +20,7 @@ namespace YayOrNay.Models
         public virtual ICollection<File> Files { get; set; }
 
 
-        
+        //logic average rating
         public double AverageRating
         {
             get

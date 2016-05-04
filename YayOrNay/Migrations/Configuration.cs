@@ -12,6 +12,7 @@ namespace YayOrNay.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(YayOrNay.Models.YayOrNayDb context)
