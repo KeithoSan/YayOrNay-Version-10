@@ -20,7 +20,7 @@
 }
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Movie", "Create")
 </p>
 <table class="table">
     <tr>
@@ -34,20 +34,24 @@
             @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            Genre
+            @Html.ActionLink("Genre", "Index", new { sortOrder = ViewBag.GenreSortParm, currentFilter = ViewBag.CurrentFilter })
+            
         </th>
         <th>
-            Certificate
+            @Html.ActionLink("Certificate", "Index", new { sortOrder = ViewBag.CertSortParm, currentFilter = ViewBag.CurrentFilter })
+            
         </th>
 
         <th>
             @Html.ActionLink("Release Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            Overall Rating
+            @Html.ActionLink("Overall Rating", "Index", new { sortOrder = ViewBag.RateSortParm, currentFilter = ViewBag.CurrentFilter })
+            
         </th>
         <th>
-            Number of Reviews
+            @Html.ActionLink("Number of Reviews", "Index", new { sortOrder = ViewBag.NumSortParm, currentFilter = ViewBag.CurrentFilter })
+            
         </th>
 
 
@@ -88,7 +92,7 @@
             <td>
 
                 <div class="scroll">
-                    @Html.DisplayFor(modelItem => item.AverageRating)
+                    @Html.DisplayFor(modelItem => item.AverageRating) out of 10
                 </div>
             </td>
 
@@ -97,7 +101,7 @@
             </td>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Edit Movie", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Reviews", "Index", "Reviews", new { id = item.Id }, null) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
@@ -110,3 +114,5 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>

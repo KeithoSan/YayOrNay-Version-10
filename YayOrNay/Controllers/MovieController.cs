@@ -23,6 +23,12 @@ namespace YayOrNay.Controllers
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
+            //
+            ViewBag.RateSortPram = sortOrder =="Rate" ? "rate_desc" : "Rate";
+            ViewBag.NumSortPram = sortOrder == "Num" ? "num_desc" : "Num";
+            ViewBag.GenreSortParm = String.IsNullOrEmpty(sortOrder) ? "genre_desc" : "";
+            ViewBag.CertSortParm = String.IsNullOrEmpty(sortOrder) ? "cert_desc" : "";
+
             if (searchString != null)
             {
                 page = 1;
@@ -68,6 +74,44 @@ namespace YayOrNay.Controllers
                 case "date_desc":
                     movies = movies.OrderByDescending(s => s.ReleaseDate);
                     break;
+                //
+
+                case "rate_desc":
+                    movies = movies.OrderByDescending(s => s.AverageRating);
+                    break;
+                case "Rate":
+                    movies = movies.OrderBy(s => s.AverageRating);
+                    break;
+                
+
+
+                case "num_desc":
+                    movies = movies.OrderByDescending(s => s.Reviews);
+                    break;
+                case "Num":
+                    movies = movies.OrderBy(s => s.Reviews);
+                    break;
+                
+
+                case "genre":
+                    movies = movies.OrderByDescending(s => s.Genre);
+                    break;
+                case "Genre":
+                    movies = movies.OrderBy(s => s.Genre);
+                    break;
+                
+
+
+                case "cert_desc":
+                    movies = movies.OrderByDescending(s => s.Certificate);
+                    break;
+                case "Cert":
+                    movies = movies.OrderBy(s => s.Certificate);
+                    break;
+                
+                //
+
+
                 default:
                     movies = movies.OrderBy(s => s.Title);
                     break;
