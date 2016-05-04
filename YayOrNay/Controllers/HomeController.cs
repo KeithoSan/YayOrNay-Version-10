@@ -31,7 +31,7 @@ namespace YayOrNay.Controllers
 
             var model =
                  _db.Movies
-                 .OrderByDescending(r => r.Reviews.Average(review => review.Rating))
+                 .OrderByDescending(r => r.Reviews.Count/*.Average(review => review.Rating)*/)
                  .Where(r => searchTerm == null || r.Title.StartsWith(searchTerm))
 
                  .Select(r => new MovieListViewModel
