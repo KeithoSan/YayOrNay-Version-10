@@ -32,8 +32,17 @@
 
 
 
-                @Html.ActionLink("Yay or Nay Movies", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+
+
+                @*@Html.ActionLink("Yay or Nay Movies", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+
+
+                <a href='@Url.Action("Index", "Home")'><img src='@Url.Content("~/Content/Image/image.png")' /> </a>
+
+
+
+
+</div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -63,6 +72,7 @@
     <hr />
     <footer>
         <p>&copy; @DateTime.Now.Year - Yay Or Nay Movie Database Web Application</p>
+        <p>@DateTime.Now</p>
     </footer>
 
 

@@ -16,6 +16,9 @@ namespace YayOrNay.Controllers
         private YayOrNayDb db = new YayOrNayDb();
 
         // GET: Movie
+
+        //caching the homepage at 3 seconds because there would be more traffic going through here.every refresh are cached in 3 seonds.
+        [OutputCache(Duration = 10)]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, string movieGenre, int? page)
         {
 

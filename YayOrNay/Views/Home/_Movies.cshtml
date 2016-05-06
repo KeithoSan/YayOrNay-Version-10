@@ -20,12 +20,16 @@
     <div class="pagedList" data-yon-target="#movieList">
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
        PagedListRenderOptions.MinimalWithItemCountText)
+
+        <h1>The Most Reviewed Movies' on our website are:</h1>
+        <p></p>
     </div>
 
+    
 
     @foreach (var item in Model)
     {
-
+       
 
         <table class="lamp">
 

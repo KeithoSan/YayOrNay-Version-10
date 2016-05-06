@@ -26,6 +26,8 @@ namespace YayOrNay.Controllers
         }
 
 
+        //caching the homepage at 3 seconds because there would be more traffic going through here. every refresh are cached in 3 seonds. 
+        [OutputCache(Duration =360, VaryByHeader ="X-Requested-With",Location =System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Index(string searchTerm = null, int page = 1)
         {
 

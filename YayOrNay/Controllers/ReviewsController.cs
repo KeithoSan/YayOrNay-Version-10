@@ -13,6 +13,9 @@ namespace YayOrNay.Controllers
         YayOrNayDb _db = new YayOrNayDb();
 
         // GET: Reviews
+
+        //caching the homepage at 1 seconds because there would be more traffic going through here.every refresh are cached in 1 seonds.
+        [OutputCache(Duration = 5)]
         public ActionResult Index([Bind(Prefix = "id")]int movieId)
         {
             var movie = _db.Movies.Find(movieId);
