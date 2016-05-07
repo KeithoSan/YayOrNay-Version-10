@@ -46,11 +46,13 @@
 
            
 
-
-            <td>
-                @Html.ActionLink("Edit Review", "Edit", new { id = item.Id }) 
+            @if (item.ReviewerName != null && item.ReviewerName.Equals(HttpContext.Current.User.Identity.Name))
+            {
+                <td>
+                    @Html.ActionLink("Edit Review", "Edit", new { id = item.Id }) 
           
-            </td>
+                </td>
+            }
         </tr>
     }
 

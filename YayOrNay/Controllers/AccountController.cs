@@ -67,7 +67,10 @@ namespace YayOrNay.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                return RedirectToAction("Index", "Home");
+                //return View(model);
             }
 
             // This doesn't count login failures towards account lockout

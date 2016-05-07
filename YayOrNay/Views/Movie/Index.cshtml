@@ -19,9 +19,22 @@
     </p>
 }
 
-<p>
+@*@if (HttpContext.Current.User.Identity.IsAuthenticated && HttpContext.Current.User.Identity.AuthenticationType.Equals("ADMIN"))
+{
+    <p>
+        @Html.ActionLink("Add New Movie", "Create")
+    </p>
+}*@
+
+@if (HttpContext.Current.User.Identity.IsAuthenticated && HttpContext.Current.User.Identity.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Add New Movie", "Create")
+    </p>
+}
+@*<p>
     @Html.ActionLink("Add New Movie", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
 
@@ -101,10 +114,33 @@
             </td>
 
             <td>
-                @Html.ActionLink("Edit Movie", "Edit", new { id = item.Id }) |
+
+                @if (HttpContext.Current.User.Identity.IsAuthenticated && HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                   
+                        @Html.ActionLink("Edit Movie", "Edit")
+                   
+                }
+                     |         
                 @Html.ActionLink("Reviews", "Index", "Reviews", new { id = item.Id }, null) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+                @if (HttpContext.Current.User.Identity.IsAuthenticated && HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+
+                    @Html.ActionLink("Delete", "Delete")
+
+                }
+                
+                
+                
+               
             </td>
+
+
+
+
+
+
         </tr>
     }
 

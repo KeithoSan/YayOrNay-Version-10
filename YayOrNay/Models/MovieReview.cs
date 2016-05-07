@@ -29,7 +29,7 @@ namespace YayOrNay.Models
 
 
 
-    public class MovieReview : IValidatableObject
+    public class MovieReview //: IValidatableObject
     {
         public int Id { get; set; }
 
@@ -43,8 +43,8 @@ namespace YayOrNay.Models
         public string Comment { get; set; }
 
 
-        [Display(Name = "User Name")]
-        [DisplayFormat(NullDisplayText = "anonymous")]
+        //[Display(Name = "User Name")]
+        //[DisplayFormat(NullDisplayText = "anonymous")]
 
         //user name length, limit
         [MaxWord(5)]
@@ -53,14 +53,14 @@ namespace YayOrNay.Models
 
 
         //validation, this will stopp keith from reviewing movies below 2 points
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (Rating < 2 && ReviewerName.ToLower().StartsWith("keith"))
-            {
-                yield return new ValidationResult("Sorry, Keith you can't do this");
-            }
-            //throw new NotImplementedException();
-        }
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //    if (Rating < 2 && ReviewerName.ToLower().StartsWith("keith"))
+        //    {
+        //        yield return new ValidationResult("Sorry, Keith you can't do this");
+        //    }
+        //    //throw new NotImplementedException();
+        //}
     }
 
 }

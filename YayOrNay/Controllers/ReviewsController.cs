@@ -38,6 +38,7 @@ namespace YayOrNay.Controllers
         {
            if(ModelState.IsValid)
            {
+                review.ReviewerName = System.Web.HttpContext.Current.User.Identity.Name;
                _db.Reviews.Add(review);
                 // get current movie from Movies list in db
                 Movie movie = _db.Movies.Find(review.MovieId);
