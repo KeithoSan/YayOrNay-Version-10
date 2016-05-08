@@ -7,13 +7,13 @@ namespace YayOrNay.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreate4 : IMigrationMetadata
+    public sealed partial class InitialCreate5 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate4));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate5));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605051717575_InitialCreate4"; }
+            get { return "201605072113321_InitialCreate5"; }
         }
         
         string IMigrationMetadata.Source

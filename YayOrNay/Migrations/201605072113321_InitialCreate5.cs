@@ -3,7 +3,7 @@ namespace YayOrNay.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate1 : DbMigration
+    public partial class InitialCreate5 : DbMigration
     {
         public override void Up()
         {

@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using YayOrNay.Models;
+using Twilio;
+using System.Diagnostics;
 
 namespace YayOrNay
 {
@@ -27,8 +29,19 @@ namespace YayOrNay
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your SMS service here to send a text message.
+            // Twilio Begin
+            var Twilio = new TwilioRestClient(
+              System.Configuration.ConfigurationManager.AppSettings["AC7ef9d4a1ebdb110266084cc0167fe270"],
+              System.Configuration.ConfigurationManager.AppSettings["16c16f602455bf28a0b18fa1888503c0"]);
+            var result = Twilio.SendMessage(
+              System.Configuration.ConfigurationManager.AppSettings["+353766805795"],
+              message.Destination, message.Body
+            );
+            // Status is one of Queued, Sending, Sent, Failed or null if the number is not valid
+            Trace.TraceInformation(result.Status);
+            // Twilio doesn't currently have an async API, so return success.
             return Task.FromResult(0);
+            // Twilio End
         }
     }
 
