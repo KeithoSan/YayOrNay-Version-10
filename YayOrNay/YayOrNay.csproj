@@ -291,6 +291,7 @@
     <Content Include="Content\Image\image.png" />
     <Content Include="Content\Image\movie-genres-comedy-icon.png" />
     <Content Include="Content\Image\movie-genres-drama-icon2.png" />
+    <Content Include="Content\Image\retro_tv.png" />
     <Content Include="Content\Image\YayOrNay.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
